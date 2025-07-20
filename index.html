@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Digi-Zone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap" rel="stylesheet"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 10%;
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, #00ffe7, #7efff5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #00ffff;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 10%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .floating-stars span {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #ffffff60;
+      border-radius: 50%;
+      animation: float 10s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); opacity: 0; }
+      100% { transform: translateY(-100vh); opacity: 1; }
+    }
+
+    .floating-stars span:nth-child(1) { left: 5%; animation-delay: 0s; }
+    .floating-stars span:nth-child(2) { left: 20%; animation-delay: 2s; }
+    .floating-stars span:nth-child(3) { left: 40%; animation-delay: 4s; }
+    .floating-stars span:nth-child(4) { left: 60%; animation-delay: 6s; }
+    .floating-stars span:nth-child(5) { left: 80%; animation-delay: 8s; }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 300%;
+      height: 300%;
+      background: radial-gradient(circle, #00c9ff 0%, #92fe9d 100%);
+      animation: rotateBG 20s linear infinite;
+      border-radius: 50%;
+      top: -100%;
+      left: -100%;
+      opacity: 0.03;
+      z-index: 0;
+    }
+
+    @keyframes rotateBG {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hero-content {
+      z-index: 1;
+    }
+
+    .typewriter {
+      font-size: 3rem;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #fff;
+      width: 0;
+      animation: typing 4s steps(30) forwards, blink 0.75s step-end infinite;
+      background: linear-gradient(90deg, #00fff0, #00c3ff, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      animation: fadeIn 2s ease-in-out;
+      background: linear-gradient(to right, #0fffc1, #23c5ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .buttons {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: 0.4s;
+      color: white;
+    }
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 100%; height: 100%;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      transition: 0s;
+    }
+
+    .btn:active::after {
+      transform: translate(-50%, -50%) scale(2.5);
+      transition: 0s;
+    }
+
+    .btn.glow {
+      background: linear-gradient(45deg, #00f2fe, #4facfe);
+      box-shadow: 0 0 15px rgba(0,255,255,0.6);
+    }
+
+    .btn.outline {
+      border: 2px solid white;
+      background: transparent;
+    }
+
+    .btn.gradient {
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+    }
+
+    @media (max-width: 768px) {
+      .typewriter { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">🧠 Digi-Zone</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Projects</a>
+      <a href="#">Tech</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="floating-stars">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="hero-content">
+      <h1 class="typewriter">Designed by Adarsh • Futuristic & Bold</h1>
+      <p>Enjoy , Life is Amazing !</p>
+      <div class="buttons">
+        <button class="btn glow">Launch Site</button>
+        <button class="btn gradient">Live Preview</button>
+        <button class="btn outline">Connect with Me</button>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
